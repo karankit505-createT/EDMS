@@ -1,0 +1,49 @@
+{
+  "platform": "WATI",
+  "description": "WATI approved template messages used by EDMS. These are one-way business-initiated messages (not interactive flows).",
+  "templates": [
+    {
+      "name": "edms_otp",
+      "env_var": "WATI_OTP_TEMPLATE",
+      "category": "UTILITY",
+      "language": "en",
+      "purpose": "Send OTP during website registration (/register page)",
+      "trigger": "User clicks 'Send OTP' on website registration form",
+      "parameters": [
+        {
+          "name": "code",
+          "env_var": "WATI_OTP_PARAM",
+          "description": "6-digit OTP code",
+          "example": "581743"
+        }
+      ],
+      "notes": "OTP is valid for 10 minutes. Max 5 attempts. 60s cooldown between resends."
+    },
+    {
+      "name": "edms_login_v1",
+      "env_var": "WATI_CREDENTIALS_TEMPLATE",
+      "category": "UTILITY",
+      "language": "en",
+      "purpose": "Send login credentials after successful registration (web or WhatsApp)",
+      "trigger": "After account creation — web registration complete or WhatsApp flow submit",
+      "parameters": [
+        {
+          "name": "detail_one",
+          "description": "Login link",
+          "example": "Login: https://election2026sir.in/login"
+        },
+        {
+          "name": "detail_two",
+          "description": "User ID",
+          "example": "User ID: 8106811285"
+        },
+        {
+          "name": "detail_three",
+          "description": "Password",
+          "example": "Password: Pass@1234"
+        }
+      ],
+      "notes": "Sent as backup after registration. Primary credential delivery is via Meta Cloud API for WhatsApp registrations."
+    }
+  ]
+}
